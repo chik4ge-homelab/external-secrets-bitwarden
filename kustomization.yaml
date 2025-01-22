@@ -6,3 +6,27 @@ resources:
   - ./apps/external-secrets.yaml
   - https://raw.githubusercontent.com/external-secrets/bitwarden-sdk-server/refs/tags/v0.3.1/hack/cluster_issuer.yaml
   - https://raw.githubusercontent.com/external-secrets/bitwarden-sdk-server/refs/tags/v0.3.1/hack/bitwarden-certificate.yaml
+
+patches:
+  - target:
+      kind: Certificate
+      name: bitwarden-bootstrap-certificate
+      namespace: cert-manager
+    patch: |-
+      - op: replace
+        path: /spec/dnsNames
+        value:
+          - bitwarden-sdk-server.external-secrets.svc.cluster.local
+          - external-secrets-bitwarden-sdk-server.external-secrets.svc.cluster.local
+          - localhost
+  - target:
+      kind: Certificate
+      name: bitwarden-tls-certs
+      namespace: default
+    patch: |-
+      - op: replace
+        path: /spec/dnsNames
+        value:
+          - bitwarden-sdk-server.external-secrets.svc.cluster.local
+          - external-secrets-bitwarden-sdk-server.external-secrets.svc.cluster.local
+          - localhost

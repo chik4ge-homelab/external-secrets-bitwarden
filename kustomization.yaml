@@ -25,6 +25,9 @@ patches:
       namespace: default
     patch: |-
       - op: replace
+        path: /metadata/namespace
+        value: external-secrets
+      - op: replace
         path: /spec/dnsNames
         value:
           - bitwarden-sdk-server.external-secrets.svc.cluster.local

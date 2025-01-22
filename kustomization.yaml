@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - ./apps/cert-manager.yaml
   - ./apps/external-secrets.yaml
-  - github.com/external-secrets/bitwarden-sdk-server/hack/cluster_issuer.yaml?ref=v0.3.1
-  - github.com/external-secrets/bitwarden-sdk-server/hack/bitwarden-certificate.yaml?ref=v0.3.1
+  - https://github.com/external-secrets/bitwarden-sdk-server/hack/cluster_issuer.yaml?ref=v0.3.1
+  - https://github.com/external-secrets/bitwarden-sdk-server/hack/bitwarden-certificate.yaml?ref=v0.3.1
